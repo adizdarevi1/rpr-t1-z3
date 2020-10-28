@@ -2,11 +2,11 @@ package ba.unsa.etf.rpr;
 
 public class Main {
 
-    class Sat {
-        int sati,minute,sekunde;
-        public:
+    public static class Sat {
+        private int sati,minute,sekunde;
+
         Sat(int sati, int minute, int sekunde) { Postavi(sati,minute,sekunde); }
-        void Postavi(int sati, int minute, int sekunde) { Sat::sati=sati; Sat::minute=minute; Sat::sekunde=sekunde; }
+        void Postavi(int sati, int minute, int sekunde) { this.sati=sati; this.minute=minute; this.sekunde=sekunde; }
         void Sljedeci() {
             sekunde++;
             if (sekunde==60) { sekunde=0; minute++; }
@@ -20,17 +20,17 @@ public class Main {
             if (sati==-1) sati=23;
         }
         void PomjeriZa(int pomak) {
-            if (pomak>0) for (int i(0); i<pomak; i++) Sljedeci();
-		else for (int i(0); i<-pomak; i++) Prethodni();
+            if (pomak>0) for (int i=0; i<pomak; i++) Sljedeci();
+		else for (int i=0; i<-pomak; i++) Prethodni();
         }
-        int DajSate() const { return sati; }
-        int DajMinute() const { return minute; }
-        int DajSekunde() const { return sekunde; }
-        void Ispisi() const { cout<<sati<<":"<<minute<<":"<<sekunde<<endl; }
+        int DajSate() { return sati; }
+        int DajMinute() { return minute; }
+        int DajSekunde() { return sekunde; }
+        void Ispisi() {System.out.println(sati + ":" + minute + ":" + sekunde);}
     }
 
     public static void main(String[] args) {
-        Sat s(15,30,45);
+        Sat s = new Sat(15,30,45);
         s.Ispisi();
         s.Sljedeci();
         s.Ispisi();
@@ -38,6 +38,5 @@ public class Main {
         s.Ispisi();
         s.Postavi(0,0,0);
         s.Ispisi();
-        return 0;
     }
 }
